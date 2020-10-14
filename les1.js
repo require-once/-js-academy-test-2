@@ -51,8 +51,11 @@ console.log(dbl);
 let one = '1';
 let two = '2', three = '3';
 
-console.log(one);
-let one = '01';
+console.log(one, two, three);
+
+one = '01';
+let one = '02';
+console.log(one, two, three);
 */
 
 
@@ -179,6 +182,36 @@ console.log(`Я не хочу вставлять значение перемен
 
 
 /*
+const greeting = function (name = `Енот`, familyname = `Неопознанный`) {
+	return `Привет, ${familyname} ${name}!`
+}
+
+console.log(greeting());
+console.log(greeting('Олег'));
+console.log(greeting('Олег', 'Вихров'));
+console.log(greeting(undefined, 'Вихров'));
+*/
+
+
+/*
+const names = ['Виктор', 'Пётр', 'Степан', 'Феофан', 'Любистарх'];
+const getRandomName = function() {
+	return names[Math.floor(Math.random() * names.length)];
+}
+
+const greet = function(name = getRandomName()) {
+	console.log(`Привет, ${name}`);
+}
+
+greet();
+greet('Кекс');
+greet();
+greet('Матроскин');
+greet();
+*/
+
+
+/*
 const multiply = (a, b) => {
 	return a * b;
 };
@@ -196,15 +229,20 @@ console.log(dbl(5));
 const createHero = (name) => ({
 	name: name,
 	age: 7,
-	superpower: `Knows JS like a God`
+	superpower: 'Knows JS like a God'
 });
-console.log(createHero(`Keks`));
+console.dir(createHero(`Keks`));
 */
 
 
 /*
 const check = () => console.log(this);
 check();	// window
+
+const check_2 = function() {
+	console.log(this);
+}
+check_2();	// undefined
 */
 
 
@@ -226,7 +264,7 @@ keks.showFrinends();
 
 
 /*
-const showThis = () => console.log(this === window);
+const showThis = () => console.log(this);
 showThis();
 
 const bindedThis = showThis.bind({name: 'Мой контекст!'});
@@ -253,7 +291,7 @@ const Body = function() {
 }
 
 Body.prototype.paint = () => {
-	console.log(this === window);
+	console.log(this);
 	this.body.classList.add('yellow');
 };
 
@@ -270,6 +308,88 @@ qwe(1, 2);
 */
 
 
+/*
+const arr = [1, 2, 3, 4];
+const [first, , , , fifth = 5] = arr;
+console.log(first, fifth);
+*/
+
+
+/*
+let first = 'Пётр', second = 'Евгений';
+[first, second] = [second, first];
+console.log(first, second);
+*/
+
+
+/*
+const generateMagickNumbers = () => [
+	Math.trunc(Math.random() * 42),
+	Math.trunc(Math.random() * 42),
+	Math.trunc(Math.random() * 42),
+];
+const [first, , third] = generateMagickNumbers();
+console.log(first, third);
+*/
+
+
+/*
+const printSomeValues = ([first = 'Не передали', , third = 'Ничего']) => {
+	console.log(`Первый: "${first}", третий: "${third}"`);
+};
+
+//printSomeValues([]);
+//printSomeValues(['одын']);
+//printSomeValues(['один', 'два', 'три']);
+//printSomeValues([1, 2, 3]);
+//printSomeValues();
+
+
+printSomeValues('');
+printSomeValues('12');
+printSomeValues('123');
+printSomeValues(document.querySelectorAll('p'));
+*/
+
+
+/*
+const cat = {
+	name: 'Кекс',
+	location: 'Санкт-Петербург',
+	color: 'Рыжий',
+	race: 'Неизвестно',
+	address: {
+		city: 'Санкт-Петербург',
+		street: 'Большая Конюшенная'
+	},
+	'home city': 'Санкт-Петербург'
+};
+
+const {name: catName, color, age: catAge = 'не указан'} = cat;
+console.log(catName, color, catAge);
+
+const {address: {street}} = cat;
+console.log(street);
+
+const {'home city': city} = cat;
+console.log(city);
+*/
+
+
+/*
+const paragraphs = document.querySelectorAll('p');
+
+for (let i = paragraphs.length; i--;) {
+	const {textContent: text} = paragraphs[i];
+	console.log(text);
+}
+*/
+
+/*
+Array.from(document.querySelectorAll('p')).forEach( ({textContent: text}) => {
+	console.log(text);
+});
+*/
+
+
 document.write('—さようなら!');
-
-
